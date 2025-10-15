@@ -4,6 +4,7 @@
 #include <catch2/generators/catch_generators_range.hpp>
 
 #include "../src/farm.hpp"
+#include "../src/carrot.h"
 
 TEST_CASE( "It can be initialized with a single plot" ) {
     Farm farm(1,1);
@@ -40,4 +41,11 @@ TEST_CASE( "It returns the symbols for a 2 x 2 farm" ) {
     REQUIRE( farm.get_symbol(0, 1) == "." );
     REQUIRE( farm.get_symbol(1, 0) == "." );
     REQUIRE( farm.get_symbol(1, 1) == "." );
+}
+
+TEST_CASE( "It allows us to plant a Carrot" ) {
+    Farm farm(1,1);
+    Carrot carrot;
+    farm.plant(0, 0, &carrot);
+    REQUIRE( farm.get_symbol(0, 0) == "v" );
 }

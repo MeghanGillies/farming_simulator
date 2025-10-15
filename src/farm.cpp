@@ -26,3 +26,9 @@ int Farm::num_of_columns() {
 std::string Farm::get_symbol(int row, int column) {
     return plots.at(row).at(column)->symbol();
 }
+
+void Farm::plant(int row, int column, Plot *plot) {
+    Plot *current_plot = plots.at(row).at(column);
+    plots.at(row).at(column) = plot;
+    delete current_plot;
+}
