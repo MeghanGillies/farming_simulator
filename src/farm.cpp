@@ -32,3 +32,14 @@ void Farm::plant(int row, int column, Plot *plot) {
     plots.at(row).at(column) = plot;
     delete current_plot;
 }
+
+void Farm::harvest(int row, int column) {
+    Plot *current_plot = plots.at(row).at(column);
+
+    if (current_plot != dynamic_cast<Soil*>(current_plot) ) {
+        Soil *soil = new Soil();
+        plots.at(row).at(column) = soil;
+    }
+
+    // delete current_plot; -> Why is this not working?
+}

@@ -18,5 +18,5 @@ public:
     int num_of_columns();
     std::string get_symbol(int row, int column);
     void plant(int row, int column, Plot *plot);
-    void plant(Carrot* row);
+    void harvest(int row, int column);
 };

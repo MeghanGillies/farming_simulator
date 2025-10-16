@@ -47,5 +47,21 @@ TEST_CASE( "It allows us to plant a Carrot" ) {
     Farm farm(1,1);
     Carrot carrot;
     farm.plant(0, 0, &carrot);
-    REQUIRE( farm.get_symbol(0, 0) == "v" );
+    REQUIRE( farm.get_symbol(0, 0) == "🥕" );
+}
+
+TEST_CASE( "It allows us to harvest a Carrot" ) {
+    Farm farm(1,1);
+    Carrot carrot;
+    farm.plant(0, 0, &carrot);
+    REQUIRE( farm.get_symbol(0, 0) == "🥕" );
+    farm.harvest(0,0);
+    REQUIRE( farm.get_symbol(0, 0) == "." );
+}
+
+TEST_CASE( "Harvesting an empty plot does nothing." ) {
+    Farm farm(1,1);
+    REQUIRE( farm.get_symbol(0, 0) == "." );
+    farm.harvest(0,0);
+    REQUIRE( farm.get_symbol(0, 0) == "." );
 }

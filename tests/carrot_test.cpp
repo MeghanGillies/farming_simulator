@@ -5,7 +5,7 @@
 
 #include "../src/carrot.h"
 
-TEST_CASE( "it returns a 'v' as its symbol" ) {
+TEST_CASE( "it returns a '🥕' as its symbol" ) {
     Carrot carrot;
-    REQUIRE( carrot.symbol() == "v" );
+    REQUIRE( carrot.symbol() == "🥕" );
 }
