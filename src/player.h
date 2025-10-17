@@ -2,15 +2,15 @@
 
 #include <string>
 
+#include "coordinate.h"
 #include "farm_dimensions.h"
 
 class Player {
 private:
     FarmDimensions *farm_dimensions;
-    int current_row = 0;
-    int current_column = 0;
+    Coordinate current_position = Coordinate(0, 0);
 public:
-    Player(FarmDimensions *dimensions);
+    explicit Player(FarmDimensions *dimensions);
 
     int row() const;
     int column() const;

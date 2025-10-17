@@ -5,6 +5,7 @@
 
 #include "plot.h"
 #include "farm_dimensions.h"
+#include "coordinate.h"
 
 class Farm {
 private:
@@ -15,7 +16,7 @@ public:
     explicit Farm(FarmDimensions *dimensions);
     int num_of_rows();
     int num_of_columns();
-    std::string get_symbol(int row, int column);
-    void plant(int row, int column, Plot *plot);
-    void harvest(int row, int column);
+    std::string get_symbol(Coordinate coord);
+    void plant(Coordinate coord, Plot *plot);
+    void harvest(Coordinate coord);
 };

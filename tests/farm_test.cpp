@@ -6,6 +6,7 @@
 #include "../src/farm.hpp"
 #include "../src/soil.h"
 #include "../src/carrot.h"
+#include "../src/coordinate.h"
 
 TEST_CASE( "It can be initialized with a single plot" ) {
     FarmDimensions dimensions(1,1);
@@ -24,54 +25,54 @@ TEST_CASE( "It can be initialized as a 1 x 2 farm" ) {
 TEST_CASE( "It returns the symbol for a single soil plot" ) {
     FarmDimensions dimensions(1,1);
     Farm farm(&dimensions);
-    REQUIRE( farm.get_symbol(0, 0) == "." );
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "." );
 }
 
 TEST_CASE( "It returns the symbols for a 1 x 2 farm" ) {
     FarmDimensions dimensions(1,2);
     Farm farm(&dimensions);
-    REQUIRE( farm.get_symbol(0, 0) == "." );
-    REQUIRE( farm.get_symbol(0, 1) == "." );
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "." );
+    REQUIRE( farm.get_symbol(Coordinate(0,1)) == "." );
 }
 
 TEST_CASE( "It returns the symbols for a 2 x 1 farm" ) {
     FarmDimensions dimensions(2,1);
     Farm farm(&dimensions);
-    REQUIRE( farm.get_symbol(0, 0) == "." );
-    REQUIRE( farm.get_symbol(1, 0) == "." );
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "." );
+    REQUIRE( farm.get_symbol(Coordinate(1,0)) == "." );
 }
 
 TEST_CASE( "It returns the symbols for a 2 x 2 farm" ) {
     FarmDimensions dimensions(2,2);
     Farm farm(&dimensions);
-    REQUIRE( farm.get_symbol(0, 0) == "." );
-    REQUIRE( farm.get_symbol(0, 1) == "." );
-    REQUIRE( farm.get_symbol(1, 0) == "." );
-    REQUIRE( farm.get_symbol(1, 1) == "." );
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "." );
+    REQUIRE( farm.get_symbol(Coordinate(0,1)) == "." );
+    REQUIRE( farm.get_symbol(Coordinate(1,0)) == "." );
+    REQUIRE( farm.get_symbol(Coordinate(1,1)) == "." );
 }
 
 TEST_CASE( "It allows us to plant a Carrot" ) {
     FarmDimensions dimensions(1,1);
     Farm farm(&dimensions);
     Carrot carrot;
-    farm.plant(0, 0, &carrot);
-    REQUIRE( farm.get_symbol(0, 0) == "🥕" );
+    farm.plant(Coordinate(0,0), &carrot);
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🥕" );
 }
 
 TEST_CASE( "It allows us to harvest a Carrot" ) {
     FarmDimensions dimensions(1,1);
     Farm farm(&dimensions);
     Carrot *carrot = new Carrot();
-    farm.plant(0, 0, carrot);
-    REQUIRE( farm.get_symbol(0, 0) == "🥕" );
-    farm.harvest(0,0);
-    REQUIRE( farm.get_symbol(0, 0) == "." );
+    farm.plant(Coordinate(0,0), carrot);
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🥕" );
+    farm.harvest(Coordinate(0,0));
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "." );
 }
 
 TEST_CASE( "Harvesting an empty plot does nothing." ) {
     FarmDimensions dimensions(1,1);
     Farm farm(&dimensions);
-    REQUIRE( farm.get_symbol(0, 0) == "." );
-    farm.harvest(0,0);
-    REQUIRE( farm.get_symbol(0, 0) == "." );
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "." );
+    farm.harvest(Coordinate(0,0));
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "." );
 }

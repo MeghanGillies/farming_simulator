@@ -2,6 +2,7 @@
 #include <vector>
 
 #include "farm.hpp"
+#include "coordinate.h"
 #include "soil.h"
 
 Farm::Farm(FarmDimensions *dimensions) : farm_dimensions(dimensions) {
@@ -23,22 +24,22 @@ int Farm::num_of_columns() {
     return farm_dimensions->get_num_columns();
 }
 
-std::string Farm::get_symbol(int row, int column) {
-    return plots.at(row).at(column)->symbol();
+std::string Farm::get_symbol(Coordinate coord) {
+    return plots.at(coord.rowIndex).at(coord.columnIndex)->symbol();
 }
 
-void Farm::plant(int row, int column, Plot *plot) {
-    Plot *current_plot = plots.at(row).at(column);
-    plots.at(row).at(column) = plot;
+void Farm::plant(Coordinate coord, Plot *plot) {
+    Plot *current_plot = plots.at(coord.rowIndex).at(coord.columnIndex);
+    plots.at(coord.rowIndex).at(coord.columnIndex) = plot;
     delete current_plot;
 }
 
-void Farm::harvest(int row, int column) {
-    Plot *current_plot = plots.at(row).at(column);
+void Farm::harvest(Coordinate coord) {
+    Plot *current_plot = plots.at(coord.rowIndex).at(coord.columnIndex);
 
     if (current_plot != dynamic_cast<Soil*>(current_plot) ) {
         Soil *soil = new Soil();
-        plots.at(row).at(column) = soil;
+        plots.at(coord.rowIndex).at(coord.columnIndex) = soil;
         delete current_plot;
     }
 }
