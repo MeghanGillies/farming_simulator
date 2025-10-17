@@ -3,17 +3,16 @@
 #include <string>
 #include <vector>
 
-#include "carrot.h"
 #include "plot.h"
+#include "farm_dimensions.h"
 
 class Farm {
 private:
-    const int rows;
-    const int columns;
+    FarmDimensions *farm_dimensions;
     std::vector<std::vector<Plot *>> plots;
 
 public:
-    Farm(int num_rows, int num_columns);
+    explicit Farm(FarmDimensions *dimensions);
     int num_of_rows();
     int num_of_columns();
     std::string get_symbol(int row, int column);

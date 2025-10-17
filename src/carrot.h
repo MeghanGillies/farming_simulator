@@ -7,4 +7,5 @@
 class Carrot : public Plot {
 public:
     std::string symbol() override;
+    ~Carrot() override = default;
 };
