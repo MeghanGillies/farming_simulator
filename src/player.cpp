@@ -6,15 +6,11 @@
 
 Player::Player(FarmDimensions *dimensions) : farm_dimensions(dimensions) {}
 
-int Player::row() const {
-    return current_position.rowIndex;
+Coordinate Player::position() const {
+    return current_position;
 }
 
-int Player::column() const {
-    return current_position.columnIndex;
-}
-
-std::string Player::symbol() {
+std::string Player::symbol() const {
     return "🧑‍🌾";
 }
 

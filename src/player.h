@@ -12,9 +12,8 @@ private:
 public:
     explicit Player(FarmDimensions *dimensions);
 
-    int row() const;
-    int column() const;
-    std::string symbol();
+    Coordinate position() const;
+    std::string symbol() const;
 
     void move_right();
     void move_left();
