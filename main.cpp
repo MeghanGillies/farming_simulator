@@ -8,40 +8,43 @@
 #include "src/ansi_clear.hpp"
 
 int main() {
+    constexpr std::streamsize MAX{std::numeric_limits<std::streamsize>::max()}; // Max for cin.ignore
+
     FarmDimensions dimensions(5,8);
     Player player(&dimensions);
     Farm farm(&dimensions);
     FarmPrinter printer(&farm, &player);
     bool game_in_progress = true;
-    std::string player_input;
+    char player_input;
 
     while(game_in_progress) {
         ansi_clear();
         std::cout << printer.pp() << std::endl;
         std::cout << "Controls:\tW = up, A = left, S = down, D = right,"
                   << "\n\t\t\tC = plant Carrot, H = harvest, Q = quit\n";
-        std::cin >> player_input;
+        std::cin.get(player_input);
+        std::cin.ignore(MAX, '\n');
 
-        if (player_input == "q") {
+        if (static_cast<char>(tolower(player_input)) == 'q') {
             game_in_progress = false;
 
-        } else if (player_input == "w") {
+        } else if (static_cast<char>(tolower(player_input)) == 'w') {
             player.move_up();
 
-        } else if (player_input == "a") {
+        } else if (static_cast<char>(tolower(player_input)) == 'a') {
             player.move_left();
 
-        } else if (player_input == "s") {
+        } else if (static_cast<char>(tolower(player_input)) == 's') {
             player.move_down();
 
-        } else if (player_input == "d") {
+        } else if (static_cast<char>(tolower(player_input)) == 'd') {
             player.move_right();
 
-        } else if (player_input == "c") {
+        } else if (static_cast<char>(tolower(player_input)) == 'c') {
             Carrot *carrot = new Carrot();
             farm.plant(player.position(), carrot);
 
-        } else if (player_input == "h") {
+        } else if (static_cast<char>(tolower(player_input)) == 'h') {
             farm.harvest(player.position());
         }
     }
