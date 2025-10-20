@@ -30,14 +30,17 @@ std::string Farm::get_symbol(Coordinate coord) {
 
 void Farm::plant(Coordinate coord, Plot *plot) {
     Plot *current_plot = plots.at(coord.rowIndex).at(coord.columnIndex);
-    plots.at(coord.rowIndex).at(coord.columnIndex) = plot;
-    delete current_plot;
+
+    if ( current_plot == dynamic_cast<Soil*>(current_plot) ) {
+        plots.at(coord.rowIndex).at(coord.columnIndex) = plot;
+        delete current_plot;
+    }
 }
 
 void Farm::harvest(Coordinate coord) {
     Plot *current_plot = plots.at(coord.rowIndex).at(coord.columnIndex);
 
-    if (current_plot != dynamic_cast<Soil*>(current_plot) ) {
+    if ( current_plot != dynamic_cast<Soil*>(current_plot) ) {
         Soil *soil = new Soil();
         plots.at(coord.rowIndex).at(coord.columnIndex) = soil;
         delete current_plot;
