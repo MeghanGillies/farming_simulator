@@ -46,6 +46,9 @@ int main() {
 
         } else if (static_cast<char>(tolower(player_input)) == 'h') {
             farm.harvest(player.position());
+
+        } else if (static_cast<char>(tolower(player_input)) == 'e') {
+            farm.end_day();
         }
     }
 

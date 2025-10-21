@@ -8,9 +8,10 @@ class Carrot : public Plot {
 private:
     const std::string baby = "🌱";
     const std::string grown = "🥕";
-    std::string current_symbol;
+    int age = 0;
+
 public:
-    Carrot();
     std::string symbol() override;
+    void end_day() override;
     ~Carrot() override = default;
 };

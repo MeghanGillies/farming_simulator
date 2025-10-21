@@ -2,10 +2,14 @@
 
 #include "carrot.h"
 
-Carrot::Carrot() {
-    current_symbol = baby;
+std::string Carrot::symbol() {
+    if (age == 0) {
+        return baby;
+    } else {
+        return grown;
+    }
 }
 
-std::string Carrot::symbol() {
-    return current_symbol;
+void Carrot::end_day() {
+    age += 1;
 }

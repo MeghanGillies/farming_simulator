@@ -40,9 +40,17 @@ void Farm::plant(Coordinate coord, Plot *plot) {
 void Farm::harvest(Coordinate coord) {
     Plot *current_plot = plots.at(coord.rowIndex).at(coord.columnIndex);
 
-    if ( current_plot != dynamic_cast<Soil*>(current_plot) ) {
+    if ( current_plot != dynamic_cast<Soil*>(current_plot) && current_plot->symbol() != baby ) {
         Soil *soil = new Soil();
         plots.at(coord.rowIndex).at(coord.columnIndex) = soil;
         delete current_plot;
+    }
+}
+
+void Farm::end_day() {
+    for (int i = 0; i < farm_dimensions->get_num_rows(); i++) {
+        for (int j = 0; j < farm_dimensions->get_num_columns(); j++) {
+            plots.at(i).at(j)->end_day();
+        }
     }
 }

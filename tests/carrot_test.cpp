@@ -5,7 +5,13 @@
 
 #include "../src/carrot.h"
 
-TEST_CASE( "it returns a '🥕' as its symbol" ) {
+TEST_CASE( "it returns a '🌱' as its symbol when planted" ) {
     Carrot carrot;
+    REQUIRE( carrot.symbol() == "🌱" );
+}
+
+TEST_CASE( "it returns a '🥕' when it is grown" ) {
+    Carrot carrot;
+    carrot.end_day();
     REQUIRE( carrot.symbol() == "🥕" );
 }

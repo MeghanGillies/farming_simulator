@@ -54,8 +54,19 @@ TEST_CASE( "It returns the symbols for a 2 x 2 farm" ) {
 TEST_CASE( "It allows us to plant a Carrot" ) {
     FarmDimensions dimensions(1,1);
     Farm farm(&dimensions);
-    Carrot carrot;
-    farm.plant(Coordinate(0,0), &carrot);
+    Carrot *carrot = new Carrot();
+    farm.plant(Coordinate(0,0), carrot);
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+}
+
+TEST_CASE("When ending the day, the Carrots will grow.") {
+    FarmDimensions dimensions(1,1);
+    Farm farm(&dimensions);
+    Carrot *carrot = new Carrot();
+    farm.plant(Coordinate(0,0), carrot);
+
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.end_day();
     REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🥕" );
 }
 
@@ -64,6 +75,9 @@ TEST_CASE( "It allows us to harvest a Carrot" ) {
     Farm farm(&dimensions);
     Carrot *carrot = new Carrot();
     farm.plant(Coordinate(0,0), carrot);
+
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.end_day();
     REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🥕" );
     farm.harvest(Coordinate(0,0));
     REQUIRE( farm.get_symbol(Coordinate(0,0)) == "." );
@@ -75,4 +89,15 @@ TEST_CASE( "Harvesting an empty plot does nothing." ) {
     REQUIRE( farm.get_symbol(Coordinate(0,0)) == "." );
     farm.harvest(Coordinate(0,0));
     REQUIRE( farm.get_symbol(Coordinate(0,0)) == "." );
+}
+
+TEST_CASE( "Harvesting a sprout does nothing" ) {
+    FarmDimensions dimensions(1,1);
+    Farm farm(&dimensions);
+    Carrot *carrot = new Carrot();
+    farm.plant(Coordinate(0,0), carrot);
+
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.harvest(Coordinate(0,0));
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
 }
