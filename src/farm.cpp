@@ -38,6 +38,10 @@ std::string Farm::get_symbol(Coordinate coord) const {
     return plots.at(coord.rowIndex).at(coord.columnIndex)->symbol();
 }
 
+int Farm::get_day_count() const {
+    return day_count;
+}
+
 void Farm::plant(Coordinate coord, Plot *plot) {
     Plot *current_plot = plots.at(coord.rowIndex).at(coord.columnIndex);
 
@@ -58,6 +62,8 @@ void Farm::harvest(Coordinate coord) {
 }
 
 void Farm::end_day() {
+    day_count += 1;
+
     for (int i = 0; i < farm_dimensions->get_num_rows(); i++) {
         for (int j = 0; j < farm_dimensions->get_num_columns(); j++) {
             plots.at(i).at(j)->end_day();

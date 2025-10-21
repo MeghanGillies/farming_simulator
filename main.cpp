@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 
 #include "src/farm_dimensions.h"
 #include "src/farm.hpp"
@@ -19,6 +20,7 @@ int main() {
 
     while(game_in_progress) {
         ansi_clear();
+        std::cout << std::right << std::setw(120) << "Current Day: " << farm.get_day_count() << std::endl;
         std::cout << printer.pp() << std::endl;
         std::cout << "Controls:\tW = up, A = left, S = down, D = right,"
                   << "\n\t\tC = plant carrot, H = harvest, E = end day,"
