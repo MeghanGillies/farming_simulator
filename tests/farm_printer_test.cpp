@@ -13,7 +13,7 @@ TEST_CASE( "Pretty Prints a single plot of land" ) {
     Farm farm(&dimensions);
     Player player(&dimensions);
     FarmPrinter printer(&farm, &player);
-    REQUIRE( printer.pp() == "🧑‍🌾\t\n" );
+    REQUIRE( printer.pp() == "\n  🧑‍🌾\t\n\n" );
 }
 
 TEST_CASE( "Pretty Prints a 1 x 2 farm" ) {
@@ -21,7 +21,7 @@ TEST_CASE( "Pretty Prints a 1 x 2 farm" ) {
     Farm farm(&dimensions);
     Player player(&dimensions);
     FarmPrinter printer(&farm, &player);
-    REQUIRE( printer.pp() == "🧑‍🌾\t.\t\n" );
+    REQUIRE( printer.pp() == "\n  🧑‍🌾\t  .\t\n\n" );
 }
 
 TEST_CASE( "Pretty Prints a 2 x 1 farm" ) {
@@ -29,7 +29,7 @@ TEST_CASE( "Pretty Prints a 2 x 1 farm" ) {
     Farm farm(&dimensions);
     Player player(&dimensions);
     FarmPrinter printer(&farm, &player);
-    REQUIRE( printer.pp() == "🧑‍🌾\t\n.\t\n" );
+    REQUIRE( printer.pp() == "\n  🧑‍🌾\t\n\n  .\t\n\n" );
 }
 
 TEST_CASE( "Pretty Prints a 2 x 2 farm" ) {
@@ -37,5 +37,5 @@ TEST_CASE( "Pretty Prints a 2 x 2 farm" ) {
     Farm farm(&dimensions);
     Player player(&dimensions);
     FarmPrinter printer(&farm, &player);
-    REQUIRE( printer.pp() == "🧑‍🌾\t.\t\n.\t.\t\n" );
+    REQUIRE( printer.pp() == "\n  🧑‍🌾\t  .\t\n\n  .\t  .\t\n\n" );
 }

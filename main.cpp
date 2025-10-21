@@ -21,7 +21,8 @@ int main() {
         ansi_clear();
         std::cout << printer.pp() << std::endl;
         std::cout << "Controls:\tW = up, A = left, S = down, D = right,"
-                  << "\n\t\t\tC = plant Carrot, H = harvest, Q = quit\n";
+                  << "\n\t\tC = plant carrot, H = harvest, E = end day,"
+                  << "\n\t\tQ = quit\n";
         std::cin.get(player_input);
         std::cin.ignore(MAX, '\n');
 
