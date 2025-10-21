@@ -15,10 +15,11 @@ private:
 
 public:
     explicit Farm(FarmDimensions *dimensions);
+    ~Farm();
 
-    int num_of_rows();
-    int num_of_columns();
-    std::string get_symbol(Coordinate coord);
+    int num_of_rows() const;
+    int num_of_columns() const;
+    std::string get_symbol(Coordinate coord) const;
 
     void plant(Coordinate coord, Plot *plot);
     void harvest(Coordinate coord);

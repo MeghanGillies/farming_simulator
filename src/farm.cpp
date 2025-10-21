@@ -5,6 +5,7 @@
 #include "coordinate.h"
 #include "soil.h"
 
+// Farm Constructor
 Farm::Farm(FarmDimensions *dimensions) : farm_dimensions(dimensions) {
     for (int i = 0; i < farm_dimensions->get_num_rows(); i++) {
         std::vector<Plot *> row;
@@ -16,15 +17,24 @@ Farm::Farm(FarmDimensions *dimensions) : farm_dimensions(dimensions) {
     }
 }
 
-int Farm::num_of_rows() {
+// Farm Destructor
+Farm::~Farm() {
+    for (int i = 0; i < farm_dimensions->get_num_rows(); i++) {
+        for (int j = 0; j < farm_dimensions->get_num_columns(); j++) {
+            delete plots.at(i).at(j);
+        }
+    }
+}
+
+int Farm::num_of_rows() const {
     return farm_dimensions->get_num_rows();
 }
 
-int Farm::num_of_columns() {
+int Farm::num_of_columns() const {
     return farm_dimensions->get_num_columns();
 }
 
-std::string Farm::get_symbol(Coordinate coord) {
+std::string Farm::get_symbol(Coordinate coord) const {
     return plots.at(coord.rowIndex).at(coord.columnIndex)->symbol();
 }
 
