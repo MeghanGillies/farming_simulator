@@ -1,13 +1,13 @@
 #pragma once
 
 struct Coordinate {
-    int rowIndex;
-    int columnIndex;
+    int row_index;
+    int column_index;
 
-    Coordinate(int row, int column) : rowIndex(row), columnIndex(column) {}
+    Coordinate(int row, int column) : row_index(row), column_index(column) {}
 
     bool is_equal(Coordinate coord) const {
-        if (rowIndex == coord.rowIndex && columnIndex == coord.columnIndex) {
+        if (row_index == coord.row_index && column_index == coord.column_index) {
             return true;
         } else {
             return false;

@@ -35,7 +35,7 @@ int Farm::num_of_columns() const {
 }
 
 std::string Farm::get_symbol(Coordinate coord) const {
-    return plots.at(coord.rowIndex).at(coord.columnIndex)->symbol();
+    return plots.at(coord.row_index).at(coord.column_index)->symbol();
 }
 
 int Farm::get_day_count() const {
@@ -43,20 +43,20 @@ int Farm::get_day_count() const {
 }
 
 void Farm::plant(Coordinate coord, Plot *plot) {
-    Plot *current_plot = plots.at(coord.rowIndex).at(coord.columnIndex);
+    Plot *current_plot = plots.at(coord.row_index).at(coord.column_index);
 
     if ( current_plot == dynamic_cast<Soil*>(current_plot) ) {
-        plots.at(coord.rowIndex).at(coord.columnIndex) = plot;
+        plots.at(coord.row_index).at(coord.column_index) = plot;
         delete current_plot;
     }
 }
 
 void Farm::harvest(Coordinate coord) {
-    Plot *current_plot = plots.at(coord.rowIndex).at(coord.columnIndex);
+    Plot *current_plot = plots.at(coord.row_index).at(coord.column_index);
 
     if ( current_plot != dynamic_cast<Soil*>(current_plot) && current_plot->symbol() != baby ) {
         Soil *soil = new Soil();
-        plots.at(coord.rowIndex).at(coord.columnIndex) = soil;
+        plots.at(coord.row_index).at(coord.column_index) = soil;
         delete current_plot;
     }
 }

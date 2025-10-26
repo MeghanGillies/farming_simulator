@@ -15,25 +15,25 @@ std::string Player::symbol() const {
 }
 
 void Player::move_right(){
-    if (current_position.columnIndex != farm_dimensions->get_num_columns() - 1) {
-        current_position.columnIndex += 1;
+    if (current_position.column_index != farm_dimensions->get_num_columns() - 1) {
+        current_position.column_index += 1;
     }
 }
 
 void Player::move_left() {
-    if (current_position.columnIndex != 0) {
-        current_position.columnIndex -= 1;
+    if (current_position.column_index != 0) {
+        current_position.column_index -= 1;
     }
 }
 
 void Player::move_up() {
-    if (current_position.rowIndex != 0) {
-        current_position.rowIndex -= 1;
+    if (current_position.row_index != 0) {
+        current_position.row_index -= 1;
     }
 }
 
 void Player::move_down() {
-    if (current_position.rowIndex != farm_dimensions->get_num_rows() - 1) {
-        current_position.rowIndex += 1;
+    if (current_position.row_index != farm_dimensions->get_num_rows() - 1) {
+        current_position.row_index += 1;
     }
 }
