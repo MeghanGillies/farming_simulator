@@ -3,6 +3,7 @@
 
 #include "farm.hpp"
 #include "coordinate.h"
+#include "plot.h"
 #include "soil.h"
 
 // Farm Constructor
