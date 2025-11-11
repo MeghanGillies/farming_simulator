@@ -14,7 +14,7 @@ private:
 public:
     std::string symbol() override;
     int get_age() const;
-    void water();
+    void water() override;
     void end_day() override;
     ~Carrot() override = default;
 };
