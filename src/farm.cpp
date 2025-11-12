@@ -52,6 +52,11 @@ void Farm::plant(Coordinate coord, Plot *plot) {
     }
 }
 
+void Farm::water(Coordinate coord) {
+    Plot *current_plot = plots.at(coord.row_index).at(coord.column_index);
+    current_plot->water();
+}
+
 void Farm::harvest(Coordinate coord) {
     Plot *current_plot = plots.at(coord.row_index).at(coord.column_index);
 

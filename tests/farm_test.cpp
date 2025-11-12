@@ -137,3 +137,13 @@ TEST_CASE( "Harvesting a sprout does nothing" ) {
     farm.harvest(Coordinate(0,0));
     REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
 }
+
+TEST_CASE( "You can water a carrot, which makes it grow faster." ) {
+    FarmDimensions dimensions(1,1);
+    Farm farm(&dimensions);
+    Carrot *carrot = new Carrot();
+    farm.plant(Coordinate(0,0), carrot);
+    farm.water(Coordinate(0,0));
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🥕" );
+}

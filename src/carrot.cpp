@@ -4,13 +4,13 @@
 
 std::string Carrot::symbol() {
     if (age == 0) {
-        return baby;
+        return "-";
+    } else if (age == 1) {
+        return "🌱";
     } else {
-        return grown;
+        return "🥕";
     }
 }
-
-int Carrot::get_age() const { return age; }
 
 void Carrot::water() {
     is_watered = true;

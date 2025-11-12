@@ -52,6 +52,10 @@ int main() {
 
         } else if (static_cast<char>(tolower(player_input)) == 'e') {
             farm.end_day();
+
+        } else if (static_cast<char>(tolower(player_input)) == 'x') {
+            farm.water(player.position());
+
         }
     }
 

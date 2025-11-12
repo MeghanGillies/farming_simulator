@@ -24,6 +24,7 @@ public:
     int get_day_count() const;
 
     void plant(Coordinate coord, Plot *plot);
+    void water(Coordinate coord);
     void harvest(Coordinate coord);
     void end_day();
 };
