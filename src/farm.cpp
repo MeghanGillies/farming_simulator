@@ -60,7 +60,7 @@ void Farm::water(Coordinate coord) {
 void Farm::harvest(Coordinate coord) {
     Plot *current_plot = plots.at(coord.row_index).at(coord.column_index);
 
-    if ( current_plot != dynamic_cast<Soil*>(current_plot) && current_plot->symbol() != baby ) {
+    if ( current_plot != dynamic_cast<Soil*>(current_plot) && current_plot->symbol() != tilled_soil && current_plot->symbol() != baby ) {
         Soil *soil = new Soil();
         plots.at(coord.row_index).at(coord.column_index) = soil;
         delete current_plot;

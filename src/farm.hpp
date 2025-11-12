@@ -11,6 +11,7 @@ class Farm {
 private:
     FarmDimensions *farm_dimensions;
     std::vector<std::vector<Plot *>> plots;
+    const std::string tilled_soil = "-";
     const std::string baby = "🌱";
     int day_count = 1;
 
