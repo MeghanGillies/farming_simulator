@@ -20,11 +20,19 @@ Farm::Farm(FarmDimensions *dimensions) : farm_dimensions(dimensions) {
 
 // Farm Destructor
 Farm::~Farm() {
+    // Delete Soil objects from soil_grid
     for (int i = 0; i < farm_dimensions->get_num_rows(); i++) {
         for (int j = 0; j < farm_dimensions->get_num_columns(); j++) {
             delete soil_grid.at(i).at(j);
         }
     }
+
+    // Delete Vegetable objects in vegetables
+    for (const auto& pair : vegetables) {
+        delete pair.second;
+    }
+    // Clear the vegetables map
+    vegetables.clear();
 }
 
 int Farm::num_of_rows() const {
