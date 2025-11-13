@@ -7,5 +7,6 @@ public:
     virtual std::string symbol() = 0;
     virtual void water() = 0;
     virtual void end_day() = 0;
+    virtual bool is_grown() = 0;
     virtual ~Vegetable() = default;
 };

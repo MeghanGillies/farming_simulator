@@ -15,9 +15,6 @@ private:
     std::vector<std::vector<Soil *>> soil_grid;
     std::map<Coordinate, Vegetable *> vegetables;
     int day_count = 1;
-
-    const std::string tilled_soil = "-";
-    const std::string baby = "🌱";
 public:
     explicit Farm(FarmDimensions *dimensions);
     ~Farm();

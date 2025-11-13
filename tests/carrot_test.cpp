@@ -56,3 +56,18 @@ TEST_CASE( "It ages the carrot properly after many waterings on many days" ) {
     carrot.end_day();
     REQUIRE( carrot.symbol() == "🥕" );
 }
+
+TEST_CASE( "is_grown() returns false if the carrot isn't in its mature state" ) {
+    Carrot carrot;
+    REQUIRE( !carrot.is_grown() );
+    carrot.end_day();
+    REQUIRE( !carrot.is_grown() );
+}
+
+
+TEST_CASE( "is_grown() returns true when the carrot is in its mature state" ) {
+    Carrot carrot;
+    carrot.end_day();
+    carrot.end_day();
+    REQUIRE( carrot.is_grown() );
+}

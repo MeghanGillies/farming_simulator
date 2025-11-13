@@ -69,7 +69,7 @@ void Farm::water(const Coordinate coord) {
 
 void Farm::harvest(const Coordinate coord) {
     if ( vegetables.contains(coord) ) {
-        if ( vegetables.at(coord)->symbol() != tilled_soil && vegetables.at(coord)->symbol() != baby ) {
+        if ( vegetables.at(coord)->is_grown() ) {
             delete vegetables.at(coord);
             vegetables.erase(coord);
         }
