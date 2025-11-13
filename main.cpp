@@ -21,10 +21,11 @@ int main() {
     while(game_in_progress) {
         ansi_clear();
         std::cout << std::right << std::setw(120) << "Current Day: " << farm.get_day_count() << std::endl;
-        std::cout << printer.pp() << std::endl;
-        std::cout << "Controls:\tW = up, A = left, S = down, D = right,"
-                  << "\n\t\tC = plant carrot, H = harvest, E = end day,"
-                  << "\n\t\tQ = quit\n";
+        std::cout << printer.pp();
+        std::cout << std::right << std::setw(118) << "Controls:"
+                  << "\n  W = up   A = left   S = down   D = right   X = water   H = harvest"
+                  << "\n  C = plant carrot   L = plant lettuce   P = plant spinach   B = plant beet"
+                  << "\n  N = plant brussel sprouts   E = end day   Q = quit\n";
         std::cin.get(player_input);
         std::cin.ignore(MAX, '\n');
 
