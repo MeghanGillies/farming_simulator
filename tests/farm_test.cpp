@@ -4,9 +4,10 @@
 #include <catch2/generators/catch_generators_range.hpp>
 
 #include "../src/farm.hpp"
+#include "../src/coordinate.h"
 #include "../src/soil.h"
 #include "../src/carrot.h"
-#include "../src/coordinate.h"
+#include "../src/lettuce.h"
 
 TEST_CASE( "It can be initialized with a single plot" ) {
     FarmDimensions dimensions(1,1);
@@ -162,4 +163,60 @@ TEST_CASE( "You can water a carrot, which makes it grow faster." ) {
     farm.water(Coordinate(0,0));
     farm.end_day();
     REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🥕" );
+}
+
+// Lettuce Tests
+TEST_CASE( "It allows us to plant a Lettuce" ) {
+    FarmDimensions dimensions(1,1);
+    Farm farm(&dimensions);
+    Lettuce *lettuce = new Lettuce();
+    farm.plant(Coordinate(0,0), lettuce);
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "-" );
+}
+
+TEST_CASE( "When ending the day, the Lettuce will grow." ) {
+    FarmDimensions dimensions(1,1);
+    Farm farm(&dimensions);
+    Lettuce *lettuce = new Lettuce();
+    farm.plant(Coordinate(0,0), lettuce);
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "-" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "-" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🥬" );
+}
+
+TEST_CASE( "It allows us to harvest a Lettuce" ) {
+    FarmDimensions dimensions(1,1);
+    Farm farm(&dimensions);
+    Lettuce *lettuce = new Lettuce();
+    farm.plant(Coordinate(0,0), lettuce);
+
+    farm.end_day();
+    farm.end_day();
+    farm.end_day();
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🥬" );
+
+    farm.harvest(Coordinate(0,0));
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "." );
+}
+
+TEST_CASE( "You can water a Lettuce, which makes it grow faster." ) {
+    FarmDimensions dimensions(1,1);
+    Farm farm(&dimensions);
+    Lettuce *lettuce = new Lettuce();
+    farm.plant(Coordinate(0,0), lettuce);
+
+    farm.water(Coordinate(0,0));
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+
+    farm.water(Coordinate(0,0));
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🥬" );
 }

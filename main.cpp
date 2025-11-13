@@ -5,6 +5,7 @@
 #include "src/farm.hpp"
 #include "src/farm_printer.h"
 #include "src/carrot.h"
+#include "src/lettuce.h"
 #include "src/player.h"
 #include "src/ansi_clear.hpp"
 
@@ -57,6 +58,9 @@ int main() {
         } else if (static_cast<char>(tolower(player_input)) == 'x') {
             farm.water(player.position());
 
+        } else if (static_cast<char>(tolower(player_input)) == 'l') {
+            Lettuce *lettuce = new Lettuce();
+            farm.plant(player.position(), lettuce);
         }
     }
 
