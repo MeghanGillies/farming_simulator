@@ -15,7 +15,7 @@ std::string FarmPrinter::pp()  {
         for (int j = 0; j < farm->num_of_columns(); j++) {
             ss << "  ";
 
-            if ( player->position().is_equal(Coordinate(i, j)) ) {
+            if ( player->position() == (Coordinate(i, j)) ) {
                 ss << player->symbol();
             } else {
                 ss << farm->get_symbol(Coordinate(i,j));

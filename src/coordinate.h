@@ -6,7 +6,7 @@ struct Coordinate {
 
     Coordinate(int row, int column) : row_index(row), column_index(column) {}
 
-    bool is_equal(Coordinate coord) const {
+    bool operator==(Coordinate coord) const {
         if (row_index == coord.row_index && column_index == coord.column_index) {
             return true;
         } else {
