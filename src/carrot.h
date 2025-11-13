@@ -2,9 +2,9 @@
 
 #include <string>
 
-#include "plot.h"
+#include "vegetable.h"
 
-class Carrot : public Plot {
+class Carrot : public Vegetable {
 private:
     bool is_watered = false;
     int age = 0;

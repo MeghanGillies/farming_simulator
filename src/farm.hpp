@@ -2,19 +2,22 @@
 
 #include <string>
 #include <vector>
+#include <map>
 
-#include "plot.h"
+#include "vegetable.h"
+#include "soil.h"
 #include "farm_dimensions.h"
 #include "coordinate.h"
 
 class Farm {
 private:
     FarmDimensions *farm_dimensions;
-    std::vector<std::vector<Plot *>> plots;
-    const std::string tilled_soil = "-";
-    const std::string baby = "🌱";
+    std::vector<std::vector<Soil *>> soil_grid;
+    std::map<Coordinate, Vegetable *> vegetables;
     int day_count = 1;
 
+    const std::string tilled_soil = "-";
+    const std::string baby = "🌱";
 public:
     explicit Farm(FarmDimensions *dimensions);
     ~Farm();
@@ -24,7 +27,7 @@ public:
     std::string get_symbol(Coordinate coord) const;
     int get_day_count() const;
 
-    void plant(Coordinate coord, Plot *plot);
+    void plant(Coordinate coord, Vegetable *veggie);
     void water(Coordinate coord);
     void harvest(Coordinate coord);
     void end_day();
