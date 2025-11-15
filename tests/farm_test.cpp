@@ -10,6 +10,7 @@
 #include "../src/lettuce.h"
 #include "../src/spinach.h"
 #include "../src/beet.h"
+#include "../src/brussel_sprouts.h"
 
 TEST_CASE( "It can be initialized with a single plot" ) {
     FarmDimensions dimensions(1,1);
@@ -355,4 +356,104 @@ TEST_CASE( "You can water a Beet, which makes it grow faster." ) {
 
     farm.end_day();
     REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🫜" );
+}
+
+// Brussel Sprout Tests
+TEST_CASE( "It allows us to plant a Brussel_Sprouts" ) {
+    FarmDimensions dimensions(1,1);
+    Farm farm(&dimensions);
+    Brussel_Sprouts *brussel_Sprouts = new Brussel_Sprouts();
+    farm.plant(Coordinate(0,0), brussel_Sprouts);
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "-" );
+}
+
+TEST_CASE( "When ending the day, the Brussel_Sprouts will grow." ) {
+    FarmDimensions dimensions(1,1);
+    Farm farm(&dimensions);
+    Brussel_Sprouts *brussel_Sprouts = new Brussel_Sprouts();
+    farm.plant(Coordinate(0,0), brussel_Sprouts);
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "-" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "-" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "-" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "-" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "-" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌳" );
+}
+
+TEST_CASE( "It allows us to harvest a Brussel_Sprouts" ) {
+    FarmDimensions dimensions(1,1);
+    Farm farm(&dimensions);
+    Brussel_Sprouts *brussel_Sprouts = new Brussel_Sprouts();
+    farm.plant(Coordinate(0,0), brussel_Sprouts);
+
+    for (int i = 0; i < 15; i++) {
+        farm.end_day();
+    }
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌳" );
+
+    farm.harvest(Coordinate(0,0));
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "." );
+}
+
+TEST_CASE( "You can water a Brussel_Sprouts, which makes it grow faster." ) {
+    FarmDimensions dimensions(1,1);
+    Farm farm(&dimensions);
+    Brussel_Sprouts *brussel_Sprouts = new Brussel_Sprouts();
+    farm.plant(Coordinate(0,0), brussel_Sprouts);
+
+    farm.water(Coordinate(0,0));
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "-" );
+
+    farm.water(Coordinate(0,0));
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "-" );
+
+    farm.water(Coordinate(0,0));
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+
+    farm.water(Coordinate(0,0));
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+
+    farm.water(Coordinate(0,0));
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+
+    farm.water(Coordinate(0,0));
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+
+    farm.water(Coordinate(0,0));
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌳" );
 }

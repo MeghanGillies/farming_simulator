@@ -9,6 +9,7 @@
 #include "src/player.h"
 #include "src/ansi_clear.hpp"
 #include "src/beet.h"
+#include "src/brussel_sprouts.h"
 #include "src/spinach.h"
 
 int main() {
@@ -69,6 +70,9 @@ int main() {
         } else if (static_cast<char>(tolower(player_input)) == 'b') {
             Beet *beet = new Beet();
             farm.plant(player.position(), beet);
+        } else if (static_cast<char>(tolower(player_input)) == 'n') {
+            Brussel_Sprouts *brussel_sprouts = new Brussel_Sprouts();
+            farm.plant(player.position(), brussel_sprouts);
         }
     }
 
