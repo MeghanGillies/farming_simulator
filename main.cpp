@@ -8,6 +8,7 @@
 #include "src/lettuce.h"
 #include "src/player.h"
 #include "src/ansi_clear.hpp"
+#include "src/beet.h"
 #include "src/spinach.h"
 
 int main() {
@@ -65,6 +66,9 @@ int main() {
         } else if (static_cast<char>(tolower(player_input)) == 'p') {
             Spinach *spinach = new Spinach();
             farm.plant(player.position(), spinach);
+        } else if (static_cast<char>(tolower(player_input)) == 'b') {
+            Beet *beet = new Beet();
+            farm.plant(player.position(), beet);
         }
     }
 

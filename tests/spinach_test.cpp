@@ -82,6 +82,8 @@ TEST_CASE( "It ages the spinach properly after many waterings on many days" ) {
     spinach.water();
     spinach.end_day();
     REQUIRE( spinach.symbol() == "🌱" );
+    spinach.end_day();
+    REQUIRE( spinach.symbol() == "🌿");
 }
 
 TEST_CASE( "is_grown() returns false if the spinach isn't in its mature state" ) {

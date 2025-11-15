@@ -9,6 +9,7 @@
 #include "../src/carrot.h"
 #include "../src/lettuce.h"
 #include "../src/spinach.h"
+#include "../src/beet.h"
 
 TEST_CASE( "It can be initialized with a single plot" ) {
     FarmDimensions dimensions(1,1);
@@ -282,4 +283,76 @@ TEST_CASE( "You can water a Spinach, which makes it grow faster." ) {
 
     farm.end_day();
     REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌿" );
+}
+
+// Beet Tests
+TEST_CASE( "It allows us to plant a Beet" ) {
+    FarmDimensions dimensions(1,1);
+    Farm farm(&dimensions);
+    Beet *beet = new Beet();
+    farm.plant(Coordinate(0,0), beet);
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "-" );
+}
+
+TEST_CASE( "When ending the day, the Beet will grow." ) {
+    FarmDimensions dimensions(1,1);
+    Farm farm(&dimensions);
+    Beet *beet = new Beet();
+    farm.plant(Coordinate(0,0), beet);
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "-" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "-" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🫜" );
+}
+
+TEST_CASE( "It allows us to harvest a Beet" ) {
+    FarmDimensions dimensions(1,1);
+    Farm farm(&dimensions);
+    Beet *beet = new Beet();
+    farm.plant(Coordinate(0,0), beet);
+
+    farm.end_day();
+    farm.end_day();
+    farm.end_day();
+    farm.end_day();
+    farm.end_day();
+    farm.end_day();
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🫜" );
+
+    farm.harvest(Coordinate(0,0));
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "." );
+}
+
+TEST_CASE( "You can water a Beet, which makes it grow faster." ) {
+    FarmDimensions dimensions(1,1);
+    Farm farm(&dimensions);
+    Beet *beet = new Beet();
+    farm.plant(Coordinate(0,0), beet);
+
+    farm.water(Coordinate(0,0));
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+
+    farm.water(Coordinate(0,0));
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+
+    farm.water(Coordinate(0,0));
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🫜" );
 }
