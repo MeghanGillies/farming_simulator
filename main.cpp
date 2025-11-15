@@ -8,6 +8,7 @@
 #include "src/lettuce.h"
 #include "src/player.h"
 #include "src/ansi_clear.hpp"
+#include "src/spinach.h"
 
 int main() {
     constexpr std::streamsize MAX{std::numeric_limits<std::streamsize>::max()}; // Max for cin.ignore
@@ -61,6 +62,9 @@ int main() {
         } else if (static_cast<char>(tolower(player_input)) == 'l') {
             Lettuce *lettuce = new Lettuce();
             farm.plant(player.position(), lettuce);
+        } else if (static_cast<char>(tolower(player_input)) == 'p') {
+            Spinach *spinach = new Spinach();
+            farm.plant(player.position(), spinach);
         }
     }
 

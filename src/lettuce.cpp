@@ -1,5 +1,4 @@
 #include <string>
-
 #include "lettuce.h"
 
 std::string Lettuce::symbol() {

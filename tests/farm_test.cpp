@@ -8,6 +8,7 @@
 #include "../src/soil.h"
 #include "../src/carrot.h"
 #include "../src/lettuce.h"
+#include "../src/spinach.h"
 
 TEST_CASE( "It can be initialized with a single plot" ) {
     FarmDimensions dimensions(1,1);
@@ -219,4 +220,66 @@ TEST_CASE( "You can water a Lettuce, which makes it grow faster." ) {
     farm.water(Coordinate(0,0));
     farm.end_day();
     REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🥬" );
+}
+
+// Spinach Tests
+TEST_CASE( "It allows us to plant a Spinach" ) {
+    FarmDimensions dimensions(1,1);
+    Farm farm(&dimensions);
+    Spinach *spinach = new Spinach();
+    farm.plant(Coordinate(0,0), spinach);
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "-" );
+}
+
+TEST_CASE( "When ending the day, the Spinach will grow." ) {
+    FarmDimensions dimensions(1,1);
+    Farm farm(&dimensions);
+    Spinach *spinach = new Spinach();
+    farm.plant(Coordinate(0,0), spinach);
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "-" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "-" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌿" );
+}
+
+TEST_CASE( "It allows us to harvest a Spinach" ) {
+    FarmDimensions dimensions(1,1);
+    Farm farm(&dimensions);
+    Spinach *spinach = new Spinach();
+    farm.plant(Coordinate(0,0), spinach);
+
+    farm.end_day();
+    farm.end_day();
+    farm.end_day();
+    farm.end_day();
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌿" );
+
+    farm.harvest(Coordinate(0,0));
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "." );
+}
+
+TEST_CASE( "You can water a Spinach, which makes it grow faster." ) {
+    FarmDimensions dimensions(1,1);
+    Farm farm(&dimensions);
+    Spinach *spinach = new Spinach();
+    farm.plant(Coordinate(0,0), spinach);
+
+    farm.water(Coordinate(0,0));
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+
+    farm.water(Coordinate(0,0));
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌱" );
+
+    farm.end_day();
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌿" );
 }

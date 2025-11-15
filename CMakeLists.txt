@@ -21,7 +21,9 @@ add_executable(farm_test tests/farm_test.cpp
         src/carrot.cpp
         src/farm_dimensions.cpp
         src/lettuce.cpp
-        src/lettuce.h)
+        src/lettuce.h
+        src/spinach.cpp
+        src/spinach.h)
 
 add_executable(main main.cpp
         src/farm_printer.cpp
@@ -30,7 +32,8 @@ add_executable(main main.cpp
         src/carrot.cpp
         src/player.cpp
         src/farm_dimensions.cpp
-        src/lettuce.cpp)
+        src/lettuce.cpp
+        src/spinach.cpp)
 
 add_executable(soil_tests tests/soil_tests.cpp
         src/soil.cpp)
@@ -55,6 +58,9 @@ add_executable(farm_dimensions_test tests/farm_dimensions_test.cpp
 add_executable(lettuce_test tests/lettuce_test.cpp
         src/lettuce.cpp)
 
+add_executable(spinach_test tests/spinach_test.cpp
+        src/spinach.cpp)
+
 target_link_libraries(farm_test PRIVATE Catch2::Catch2WithMain)
 target_link_libraries(soil_tests PRIVATE Catch2::Catch2WithMain)
 target_link_libraries(farm_printer_test PRIVATE Catch2::Catch2WithMain)
@@ -62,3 +68,4 @@ target_link_libraries(carrot_test PRIVATE Catch2::Catch2WithMain)
 target_link_libraries(player_test PRIVATE Catch2::Catch2WithMain)
 target_link_libraries(farm_dimensions_test PRIVATE Catch2::Catch2WithMain)
 target_link_libraries(lettuce_test PRIVATE Catch2::Catch2WithMain)
+target_link_libraries(spinach_test PRIVATE Catch2::Catch2WithMain)

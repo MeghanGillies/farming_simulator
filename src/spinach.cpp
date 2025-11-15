@@ -1,7 +1,7 @@
 #include <string>
-#include "carrot.h"
+#include "spinach.h"
 
-std::string Carrot::symbol() {
+std::string Spinach::symbol() {
     if (age < age_to_sprout) {
         return tilled_soil;
     } else if (age < age_to_grow) {
@@ -11,11 +11,11 @@ std::string Carrot::symbol() {
     }
 }
 
-void Carrot::water() {
+void Spinach::water() {
     is_watered = true;
 }
 
-void Carrot::end_day() {
+void Spinach::end_day() {
     if (is_watered) {
         age += 2;
         is_watered = false;
@@ -24,7 +24,7 @@ void Carrot::end_day() {
     }
 }
 
-bool Carrot::is_grown() {
+bool Spinach::is_grown() {
     if ( symbol() == grown ) {
         return true;
     } else {

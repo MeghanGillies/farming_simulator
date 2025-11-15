@@ -1,7 +1,6 @@
 #pragma once
 
 #include <string>
-
 #include "vegetable.h"
 
 class Carrot : public Vegetable {
