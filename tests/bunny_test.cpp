@@ -102,3 +102,40 @@ TEST_CASE( "If the Player is to the LEFT of the Bunny, It flees RIGHT 4 spaces" 
     bunny.flee(Coordinate(1, 0));
     REQUIRE( bunny.position() == Coordinate(1,5) );
 }
+
+// Testing when the Bunny is Out of Bounds
+TEST_CASE( "Will return false if Bunny is in the bounds of the farm" ) {
+    FarmDimensions dimensions(4,4);
+    Bunny bunny(Coordinate(0,0), &dimensions);
+    REQUIRE( !bunny.is_out_of_bounds() );
+}
+
+TEST_CASE( "Will return true if Bunny is out of bounds UP" ) {
+    FarmDimensions dimensions(4,4);
+    Bunny bunny(Coordinate(-1,0), &dimensions);
+    REQUIRE( bunny.is_out_of_bounds() );
+}
+
+TEST_CASE( "Will return true if Bunny is out of bounds LEFT" ) {
+    FarmDimensions dimensions(4,4);
+    Bunny bunny(Coordinate(0,-1), &dimensions);
+    REQUIRE( bunny.is_out_of_bounds() );
+}
+
+TEST_CASE( "Will return true if Bunny is out of bounds DOWN" ) {
+    FarmDimensions dimensions(4,4);
+    Bunny bunny(Coordinate(4,0), &dimensions);
+    REQUIRE( bunny.is_out_of_bounds() );
+}
+
+TEST_CASE( "Will return true if Bunny is out of bounds RIGHT" ) {
+    FarmDimensions dimensions(4,4);
+    Bunny bunny(Coordinate(0,4), &dimensions);
+    REQUIRE( bunny.is_out_of_bounds() );
+}
+
+TEST_CASE( "Will return true if Bunny is somewhere out of bounds of the farm" ) {
+    FarmDimensions dimensions(4,4);
+    Bunny bunny(Coordinate(-3,2), &dimensions);
+    REQUIRE( bunny.is_out_of_bounds() );
+}

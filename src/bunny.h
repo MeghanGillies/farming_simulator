@@ -21,4 +21,5 @@ public:
 
     void move();
     void flee(Coordinate player_positon);
+    bool is_out_of_bounds();
 };

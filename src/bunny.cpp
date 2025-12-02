@@ -62,3 +62,22 @@ void Bunny::flee(Coordinate player_positon) {
         }
     }
 }
+
+bool Bunny::is_out_of_bounds() {
+    if ( current_position.row_index >= farm_dimensions->get_num_rows() ) {
+        // Out of bounds BELOW farm
+        return true;
+    } else if ( current_position.row_index < 0 ) {
+        // Out of bounds ABOVE farm
+        return true;
+    } else if ( current_position.column_index >= farm_dimensions->get_num_columns() ) {
+        // Out of bounds to the RIGHT of the farm
+        return true;
+    } else if ( current_position.column_index < 0 ) {
+        // Out of bounds to the LEFT of the farm
+        return true;
+    } else {
+        // Within bounds of the farm
+        return false;
+    }
+}
