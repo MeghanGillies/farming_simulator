@@ -63,7 +63,7 @@ void Bunny::flee(Coordinate player_positon) {
     }
 }
 
-bool Bunny::is_out_of_bounds() {
+bool Bunny::is_out_of_bounds() const {
     if ( current_position.row_index >= farm_dimensions->get_num_rows() ) {
         // Out of bounds BELOW farm
         return true;
