@@ -51,6 +51,7 @@ add_executable(farm_printer_test tests/farm_printer_test.cpp
         src/farm.cpp
         src/soil.cpp
         src/player.cpp
+        src/bunny.cpp
         src/farm_dimensions.cpp)
 
 add_executable(player_test tests/player_test.cpp
