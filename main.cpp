@@ -11,6 +11,7 @@
 #include "src/beet.h"
 #include "src/brussel_sprouts.h"
 #include "src/spinach.h"
+#include "src/bunny.h"
 
 int main() {
     constexpr std::streamsize MAX{std::numeric_limits<std::streamsize>::max()}; // Max for cin.ignore

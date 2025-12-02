@@ -37,7 +37,8 @@ add_executable(main main.cpp
         src/lettuce.cpp
         src/spinach.cpp
         src/beet.cpp
-        src/brussel_sprouts.cpp)
+        src/brussel_sprouts.cpp
+        src/bunny.cpp)
 
 add_executable(soil_tests tests/soil_tests.cpp
         src/soil.cpp)
@@ -71,6 +72,10 @@ add_executable(beet_test tests/beet_test.cpp
 add_executable(brussel_sprouts_test tests/brussel_sprouts_test.cpp
         src/brussel_sprouts.cpp)
 
+add_executable(bunny_test tests/bunny_test.cpp
+        src/bunny.cpp
+        src/farm_dimensions.cpp)
+
 target_link_libraries(farm_test PRIVATE Catch2::Catch2WithMain)
 target_link_libraries(soil_tests PRIVATE Catch2::Catch2WithMain)
 target_link_libraries(farm_printer_test PRIVATE Catch2::Catch2WithMain)
@@ -81,3 +86,4 @@ target_link_libraries(lettuce_test PRIVATE Catch2::Catch2WithMain)
 target_link_libraries(spinach_test PRIVATE Catch2::Catch2WithMain)
 target_link_libraries(beet_test PRIVATE Catch2::Catch2WithMain)
 target_link_libraries(brussel_sprouts_test PRIVATE Catch2::Catch2WithMain)
+target_link_libraries(bunny_test PRIVATE Catch2::Catch2WithMain)
