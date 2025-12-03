@@ -6,7 +6,7 @@
 
 class TestRandom: public Random {
 public:
-    override int generate_int() {
+    int generate_int() override {
         return rand();
     }
 };

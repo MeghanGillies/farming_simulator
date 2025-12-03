@@ -8,7 +8,7 @@ private:
 public:
     explicit TestRandom( int x ) : num( x ) {}
 
-    override int generate_int() const {
+    int generate_int() override {
         return num;
     }
 };
