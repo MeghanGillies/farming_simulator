@@ -457,3 +457,31 @@ TEST_CASE( "You can water a Brussel_Sprouts, which makes it grow faster." ) {
     farm.end_day();
     REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🌳" );
 }
+
+TEST_CASE( "remove_plant() will remove a plant from the farm regardless of maturity" ) {
+    FarmDimensions dimensions(1,3);
+    Farm farm(&dimensions);
+
+    Carrot *carrot1 = new Carrot();
+    Carrot *carrot2 = new Carrot();
+    Carrot *carrot3 = new Carrot();
+
+    farm.plant(Coordinate(0,0), carrot1);
+    farm.end_day();
+    farm.plant(Coordinate(0,1), carrot2);
+    farm.end_day();
+    farm.plant(Coordinate(0,2), carrot3);
+
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "🥕" );
+    REQUIRE( farm.get_symbol(Coordinate(0,1)) == "🌱" );
+    REQUIRE( farm.get_symbol(Coordinate(0,2)) == "-" );
+
+    farm.remove_plant(Coordinate(0,0));
+    REQUIRE( farm.get_symbol(Coordinate(0,0)) == "." );
+
+    farm.remove_plant(Coordinate(0,1));
+    REQUIRE( farm.get_symbol(Coordinate(0,1)) == "." );
+
+    farm.remove_plant(Coordinate(0,2));
+    REQUIRE( farm.get_symbol(Coordinate(0,2)) == "." );
+}

@@ -76,6 +76,14 @@ void Farm::harvest(const Coordinate coord) {
     }
 }
 
+// Removes plant from the farm regardless of maturity
+void Farm::remove_plant(const Coordinate coord) {
+    if ( vegetables.contains(coord) ) {
+            delete vegetables.at(coord);
+            vegetables.erase(coord);
+    }
+}
+
 void Farm::end_day() {
     day_count += 1;
 

@@ -27,5 +27,6 @@ public:
     void plant(Coordinate coord, Vegetable *veggie);
     void water(Coordinate coord);
     void harvest(Coordinate coord);
+    void remove_plant(const Coordinate coord);
     void end_day();
 };
