@@ -5,7 +5,7 @@
 #include "farm.hpp"
 #include "player.h"
 
-FarmPrinter::FarmPrinter(Farm *f, Player *p, Bunny *b) : farm(f), player(p), bunny(b) {}
+FarmPrinter::FarmPrinter(Farm *f, Player *p, Bunny **b) : farm(f), player(p), bunny(b) {}
 
 std::string FarmPrinter::pp()  {
     std::stringstream ss;
@@ -17,8 +17,8 @@ std::string FarmPrinter::pp()  {
 
             if ( player->position() == (Coordinate(i, j)) ) {
                 ss << player->symbol();
-            } else if ( bunny != nullptr && bunny->position() == Coordinate(i, j) ) {
-                ss << bunny->symbol();
+            } else if ( *bunny != nullptr && (*bunny)->position() == Coordinate(i, j) ) {
+                ss << (*bunny)->symbol();
             } else {
                 ss << farm->get_symbol(Coordinate(i,j));
             }

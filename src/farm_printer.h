@@ -10,8 +10,8 @@ class FarmPrinter {
 private:
     Farm *farm;
     Player *player;
-    Bunny *bunny;
+    Bunny **bunny;
 public:
-    FarmPrinter(Farm *f, Player *p, Bunny *b);
+    FarmPrinter(Farm *f, Player *p, Bunny **b);
     std::string pp();
 };

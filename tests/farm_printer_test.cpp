@@ -15,7 +15,7 @@ TEST_CASE( "Pretty Prints a single plot of land" ) {
     Player player(&dimensions);
     Bunny *bunny = nullptr;
 
-    FarmPrinter printer(&farm, &player, bunny);
+    FarmPrinter printer(&farm, &player, &bunny);
     REQUIRE( printer.pp() == "\n  🧑‍🌾\t\n\n" );
 }
 
@@ -25,7 +25,7 @@ TEST_CASE( "Pretty Prints a 1 x 2 farm" ) {
     Player player(&dimensions);
     Bunny *bunny = nullptr;
 
-    FarmPrinter printer(&farm, &player, bunny);
+    FarmPrinter printer(&farm, &player, &bunny);
     REQUIRE( printer.pp() == "\n  🧑‍🌾\t  .\t\n\n" );
 }
 
@@ -35,7 +35,7 @@ TEST_CASE( "Pretty Prints a 2 x 1 farm" ) {
     Player player(&dimensions);
     Bunny *bunny = nullptr;
 
-    FarmPrinter printer(&farm, &player, bunny);
+    FarmPrinter printer(&farm, &player, &bunny);
     REQUIRE( printer.pp() == "\n  🧑‍🌾\t\n\n  .\t\n\n" );
 }
 
@@ -45,7 +45,7 @@ TEST_CASE( "Pretty Prints a 2 x 2 farm" ) {
     Player player(&dimensions);
     Bunny *bunny = nullptr;
 
-    FarmPrinter printer(&farm, &player, bunny);
+    FarmPrinter printer(&farm, &player, &bunny);
     REQUIRE( printer.pp() == "\n  🧑‍🌾\t  .\t\n\n  .\t  .\t\n\n" );
 }
 
@@ -56,7 +56,7 @@ TEST_CASE( "Will Pretty Print a Farm with a Bunny at its current position" ) {
     Player player(&dimensions);
     Bunny *bunny = new Bunny(Coordinate(1,1), &dimensions);
 
-    FarmPrinter printer(&farm, &player, bunny);
+    FarmPrinter printer(&farm, &player, &bunny);
     REQUIRE( printer.pp() == "\n  🧑‍🌾\t  .\t\n\n  .\t  🐇\t\n\n" );
 
     delete bunny;
