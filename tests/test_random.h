@@ -4,11 +4,19 @@
 
 class TestRandom: public Random {
 private:
-    int num;
+    static constexpr int SIZE = 3;
+    int array[SIZE];
+    int counter = 0;
 public:
-    explicit TestRandom( int x ) : num( x ) {}
+    explicit TestRandom( int arr[] ) {
+        for (int i = 0; i < SIZE; i++) {
+            array[i] = arr[i];
+        }
+    }
 
     int generate_int() override {
-        return num;
+        int value = array[counter];
+        counter++;
+        return value;
     }
 };

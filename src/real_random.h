@@ -4,7 +4,7 @@
 
 #include "random.h"
 
-class TestRandom: public Random {
+class RealRandom: public Random {
 public:
     int generate_int() override {
         return rand();

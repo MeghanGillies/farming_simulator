@@ -77,39 +77,36 @@ void BunnyManager::spawn_bunny(Coordinate player_coord) {
 }
 
 void BunnyManager::bunny_eat() const {
-    if (bunny != nullptr) {
+    if (*bunny != nullptr) {
         farm->remove_plant( (*bunny)->position() );
     }
 }
 
 void BunnyManager::bunny_flee(Coordinate player_coord) const {
-    if (bunny != nullptr) {
+    if (*bunny != nullptr) {
         (*bunny)->flee(player_coord);
     }
 }
 
 void BunnyManager::bunny_move(Coordinate player_coord) {
-    if (bunny != nullptr) {
+    if (*bunny != nullptr) {
         (*bunny)->move();
         // Makes the bunny flee if it moves next to the player
         (*bunny)->flee(player_coord);
-    } else {
-        // Calls function to randomly spawn a Bunny
-        spawn_bunny(player_coord);
     }
 }
 
 // If the bunny is out of bounds, delete the bunny
 void BunnyManager::delete_bunny() {
-    if ( bunny != nullptr && (*bunny)->is_out_of_bounds() ) {
-        delete bunny;
-        bunny = nullptr;
+    if ( *bunny != nullptr && (*bunny)->is_out_of_bounds() ) {
+        delete *bunny;
+        *bunny = nullptr;
     }
 }
 
 BunnyManager::~BunnyManager() {
-    if ( bunny != nullptr ) {
-        delete bunny;
-        bunny = nullptr;
+    if ( *bunny != nullptr ) {
+        delete *bunny;
+        *bunny = nullptr;
     }
 }
