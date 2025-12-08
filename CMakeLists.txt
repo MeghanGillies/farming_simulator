@@ -40,7 +40,8 @@ add_executable(main main.cpp
         src/brussel_sprouts.cpp
         src/bunny.cpp
         src/bunny_manager.cpp
-        src/bunny_manager.h)
+        src/bunny_manager.h
+        src/game.cpp)
 
 add_executable(soil_tests tests/soil_tests.cpp
         src/soil.cpp)
@@ -84,7 +85,8 @@ add_executable(bunny_manager_test tests/bunny_manager_test.cpp
         src/bunny.cpp
         src/farm_dimensions.cpp
         src/farm.cpp
-        src/soil.cpp)
+        src/soil.cpp
+        src/carrot.cpp)
 
 target_link_libraries(farm_test PRIVATE Catch2::Catch2WithMain)
 target_link_libraries(soil_tests PRIVATE Catch2::Catch2WithMain)
