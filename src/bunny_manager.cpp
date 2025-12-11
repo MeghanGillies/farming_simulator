@@ -9,7 +9,7 @@ Coordinate BunnyManager::validate_bunny_coord( bool row_is_rand, Coordinate bunn
 
     while (!valid_coord) {
         if ( row_is_rand ) {
-            row = random->generate_int() % farm_dimensions->get_num_columns();
+            row = random->generate_int() % farm_dimensions->get_num_rows();
 
         } else {
             column = random->generate_int() % farm_dimensions->get_num_columns();
